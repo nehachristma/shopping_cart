@@ -12,7 +12,7 @@ const ViewCart= () => {
 
   const handleCheckout = () => {
     const updatedCartItems = cartItems.map((item) => {
-   const updatedQuantity= itemQuantities[item.id] || item.quantity;
+   const updatedQuantity= setQuantities[item.id] || item.quantity;
 
       return{title:item.title, quantity:updatedQuantity||1}
     });
