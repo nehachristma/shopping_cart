@@ -26,23 +26,22 @@ const MyComponent = ({ item }) => {
 
 
     
-
-  const handleAddToCart = (item) => {
-    const isInCart = cartItems.find((cartItem) => cartItem.id === item.id);
-    if (!isInCart) {
-        dispatch(addItemToCart({ item, quantity: itemQuantities[item.id] || 1 }));
-    } else {
-        alert("Item already added to cart");
-    }
-  };
-  const handleQuantityChange = (e, itemId) => {
-    const { value } = e.target;
-    setItemQuantities((prevQuantities) => ({
-        ...prevQuantities,
-        [itemId]: parseInt(value) || 1,
-    }));
-  };
-
+    const handleAddToCart = (item) => {
+      const isInCart = cartItems.find((cartItem) => cartItem.id === item.id);
+      if (!isInCart) {
+          dispatch(addItemToCart({ item, quantity: itemQuantities[item.id] || 1 }));
+      } else {
+          alert("Item already added to cart");
+      }
+    };
+    const handleQuantityChange = (e, itemId) => {
+      const { value } = e.target;
+      setItemQuantities((prevQuantities) => ({
+          ...prevQuantities,
+          [itemId]: parseInt(value) || 1,
+      }));
+    };
+  
 
 
     return (
@@ -62,7 +61,7 @@ const MyComponent = ({ item }) => {
                 <div className="card-body">
                   <h5 className="card-title">{item.title}</h5>
                   <h5 className="card-title" >{item.category}</h5>
-                  <h5 className="card-title" >{item.price}</h5>
+                  <h5 className="card-title" >${item.price}</h5>
                   <h5 className="card-title" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', color:'grey' }}>
     {item.description}
 </h5>
