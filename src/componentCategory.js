@@ -30,7 +30,7 @@ const MyComponent = () => {
                 <p>{String(item)}</p>
               
                 <Link to={`/${String(item).replace(/[ '\s]/g, '')}`}>
-             
+
                 <button
                   type="button"
                   className="btn btn-sm mb-2"

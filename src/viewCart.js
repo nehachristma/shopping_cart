@@ -12,9 +12,13 @@ const ViewCart= () => {
 
   const handleCheckout = () => {
     const updatedCartItems = cartItems.map((item) => {
-   const updatedQuantity= setQuantities[item.id] || item.quantity;
+   const updatedQuantity= setQuantities[item.id] || item.quantity; 
 
-      return{title:item.title, quantity:updatedQuantity||1}
+      return{
+        title:item.title, 
+        quantity:updatedQuantity||1,
+        rating: item.rating.rate
+      }
     });
 
     console.log("Checkout items:");
@@ -35,7 +39,9 @@ const ViewCart= () => {
 
   return (
     <div className="container">
-      <button onClick={handleCheckout}>Checkout</button>
+           
+
+      <button className="btn btn-primary mb-2" style={{ border: '1px solid black' }} onClick={handleCheckout}>Checkout</button>
       <div className="row row-cols-md-4 g-4">
         {cartItems.map((item) => (
           <div key={item.id} className="col">
@@ -49,7 +55,7 @@ const ViewCart= () => {
               <div className="card-body">
                 <h5 className="card-title" style={{ fontSize: "1rem" }}>{item.title}</h5>
                 <p>${item.price}</p>
-
+                <h5 className="card-title">Rating:{item.rating.rate}</h5>
                 <input type="number" className="form-control" defaultValue={item.quantity}   onChange={(e) => handleQuantityChange(e, item.id)} ></input>
 
                 <button

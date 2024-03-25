@@ -62,6 +62,7 @@ const MyComponent = () => {
                   <h5 className="card-title" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', color: 'grey' }}>
                     {item.description}
                   </h5>
+                  <h5 className="card-title">Rating:{item.rating.rate}</h5>
 
 
                   <div style={{ display: 'flex', alignItems: 'center' }}>
