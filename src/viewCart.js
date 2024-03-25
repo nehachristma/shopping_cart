@@ -8,24 +8,21 @@ const ViewCart= () => {
   const handleRemove=(item)=>{
        dispatch(removeItemFromCart(item))
   }
+  
 
   const handleCheckout = () => {
-    const updatedCartItems = cartItems.map(item => {
-        const updatedQuantity = quantities[item.id] || item.quantity;
-        return { ...item, quantity: updatedQuantity };
+    const updatedCartItems = cartItems.map((item) => {
+   const updatedQuantity= itemQuantities[item.id] || item.quantity;
+
+      return{title:item.title, quantity:updatedQuantity||1}
     });
-    // Compare quantities before and after changes
-    const hasQuantityChanged = cartItems.some(item => {
-        const updatedQuantity = quantities[item.id] || item.quantity;
-        return updatedQuantity !== item.quantity;
-    });
-    if (hasQuantityChanged) {
-        alert("Checkout items:\n" + JSON.stringify(updatedCartItems, null, 2));
-    }
-    else{
-      alert("Checkout items:\n" + JSON.stringify(updatedCartItems, null, 2));
-    }
-};
+
+    console.log("Checkout items:");
+    console.log(JSON.stringify(updatedCartItems, null, 2));
+
+  };
+
+
   const handleQuantityChange = (e, itemId) => {
     const { value } = e.target;
     setQuantities(prevQuantities => ({
